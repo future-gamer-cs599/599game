@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded = true;
     Animator playerAnimator;
     Rigidbody playerRigidbody;
-    Vector3 m_Movement;
-    Quaternion m_Rotation = Quaternion.identity;
+    Vector3 movementVec3;
+    Quaternion playerRotation = Quaternion.identity;
 
     void Start()
     {
@@ -25,27 +25,27 @@ public class PlayerMovement : MonoBehaviour
         // float horizontal = Input.GetAxis("Horizontal");
         // float vertical = Input.GetAxis("Vertical");
 
-        // m_Movement.Set(horizontal, 0f, vertical);
-        // m_Movement.Normalize();
+        // movementVec3.Set(horizontal, 0f, vertical);
+        // movementVec3.Normalize();
 
         // bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         // bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         // bool isWalking = hasHorizontalInput || hasVerticalInput;
         // playerAnimator.SetBool("IsWalking", isWalking);
 
-        // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, TurnSpeed * Time.deltaTime, 0f);
-        // m_Rotation = Quaternion.LookRotation(desiredForward);
+        // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, movementVec3, TurnSpeed * Time.deltaTime, 0f);
+        // playerRotation = Quaternion.LookRotation(desiredForward);
 
-        m_Movement.Set(0, 0, 1f);
+        movementVec3.Set(0, 0, 1f);
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-             m_Movement.Set(1f, 0, 1f);
+             movementVec3.Set(1f, 0, 1f);
         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             // playerRigidbody.AddForce(-SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            m_Movement.Set(-1f, 0, 1f);
+            movementVec3.Set(-1f, 0, 1f);
         }
-        m_Movement.Normalize();
+        movementVec3.Normalize();
         playerAnimator.SetBool("IsWalking", true);
 
         if (Input.GetKey(KeyCode.Space)) {
@@ -55,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        playerRigidbody.MovePosition(playerRigidbody.position + 10 * m_Movement * playerAnimator.deltaPosition.magnitude);
-        playerRigidbody.MoveRotation(m_Rotation);
+        playerRigidbody.MovePosition(playerRigidbody.position + 10 * movementVec3 * playerAnimator.deltaPosition.magnitude);
+        playerRigidbody.MoveRotation(playerRotation);
     }
 
     private void Jump()  
