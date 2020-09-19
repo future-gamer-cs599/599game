@@ -59,6 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7618985246852527738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,9 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d372b4c86a7a845f28ec1a4abf40062e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 7618985246852527742}
-  forwardForce: 1000
-  sidewayForce: 50
+  speed: 6
 --- !u!114 &7618985246852527740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,4 +140,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 7618985246852527743}
-  gameManager: {fileID: 0}
