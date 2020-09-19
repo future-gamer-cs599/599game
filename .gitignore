@@ -59,7 +59,7 @@ sysinfo.txt
 crashlytics-build.properties
 
 #vscode files
-.vscode
+/.vscode/
 
 
 
