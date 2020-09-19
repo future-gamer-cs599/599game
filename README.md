@@ -9,7 +9,7 @@ Followed tutorial: https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR
 * 3 levels
 
 **Description**
-* Very simple with 1, 2 and 3 obstacles for levels 1, 2 and 3
+* Very simple levels with basic movement and jump functions.
 * The player automatically runs forward on the race track when the game starts
 * If the player collides with an obstacle or fall off the track, the player loses and the game automatically restarts
 * If the player runs through the race track without hitting any obstacles, this level is considered completed. A "level complete!" panel appears and the game automatically loads the next level or the goodbye scene
