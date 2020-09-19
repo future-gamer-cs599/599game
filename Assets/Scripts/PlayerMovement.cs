@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float turnSpeed = 20f;
+    public float TurnSpeed = 20f;
     public float JumpSpeed = 0.001f;
+    public float ForwardForce = 10f; // forward force in fixedupdate
+    public float SidewayForce = 1f; // force moving left or right
     private bool grounded = true;
-    public float forwardForce = 10f; // forward force in fixedupdate
-    public float sidewayForce = 1f; // force moving left or right
-    Animator m_Animator;
-    Rigidbody m_Rigidbody;
+    Animator playerAnimator;
+    Rigidbody playerRigidbody;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
 
     void Start()
     {
-        m_Animator = GetComponent<Animator>();
-        m_Rigidbody = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
+        playerRigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -31,22 +31,22 @@ public class PlayerMovement : MonoBehaviour
         // bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         // bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         // bool isWalking = hasHorizontalInput || hasVerticalInput;
-        // m_Animator.SetBool("IsWalking", isWalking);
+        // playerAnimator.SetBool("IsWalking", isWalking);
 
-        // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, TurnSpeed * Time.deltaTime, 0f);
         // m_Rotation = Quaternion.LookRotation(desiredForward);
 
         m_Movement.Set(0, 0, 1f);
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            // m_Rigidbody.AddForce(sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
              m_Movement.Set(1f, 0, 1f);
         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            // m_Rigidbody.AddForce(-sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            // playerRigidbody.AddForce(-SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             m_Movement.Set(-1f, 0, 1f);
         }
         m_Movement.Normalize();
-        m_Animator.SetBool("IsWalking", true);
+        playerAnimator.SetBool("IsWalking", true);
 
         if (Input.GetKey(KeyCode.Space)) {
             Jump();
@@ -55,16 +55,16 @@ public class PlayerMovement : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        m_Rigidbody.MovePosition(m_Rigidbody.position + 10 * m_Movement * m_Animator.deltaPosition.magnitude);
-        m_Rigidbody.MoveRotation(m_Rotation);
+        playerRigidbody.MovePosition(playerRigidbody.position + 10 * m_Movement * playerAnimator.deltaPosition.magnitude);
+        playerRigidbody.MoveRotation(m_Rotation);
     }
 
     private void Jump()  
     {
         if (grounded)
         {
-            // m_Rigidbody.AddForce(0f, JumpSpeed, 0f, ForceMode.VelocityChange);
-            m_Rigidbody.AddForce(Vector3.up * JumpSpeed);
+            // playerRigidbody.AddForce(0f, JumpSpeed, 0f, ForceMode.VelocityChange);
+            playerRigidbody.AddForce(Vector3.up * JumpSpeed);
             grounded = false;
         }
     }
@@ -81,8 +81,8 @@ public class PlayerMovement : MonoBehaviour
 // {
 //     public Rigidbody rb; // the player rigidbody
 //     public float initialForwardForce = 2000f;
-//     public float forwardForce = 10f; // forward force in fixedupdate
-//     public float sidewayForce = 1f; // force moving left or right
+//     public float ForwardForce = 10f; // forward force in fixedupdate
+//     public float SidewayForce = 1f; // force moving left or right
 //     public float jumpForce = 10f; // forward force in fixedupdate
 //     public GameObject ground;
 //     public float forwardSpeed = 20f;
@@ -102,13 +102,13 @@ public class PlayerMovement : MonoBehaviour
 
 //         // use WASD and up down left right to control the player movement  
 //         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-//             rb.AddForce(sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+//             rb.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 //         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-//             rb.AddForce(-sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+//             rb.AddForce(-SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 //         // } else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-//         //     rb.AddForce(0, 0, forwardForce * Time.deltaTime, ForceMode.VelocityChange);
+//         //     rb.AddForce(0, 0, ForwardForce * Time.deltaTime, ForceMode.VelocityChange);
 //         // } else if (Input.GetKey(KeyCode.S) ||  Input.GetKey(KeyCode.DownArrow)) {
-//         //     rb.AddForce(0, 0, -forwardForce * Time.deltaTime, ForceMode.VelocityChange);
+//         //     rb.AddForce(0, 0, -ForwardForce * Time.deltaTime, ForceMode.VelocityChange);
 //         } else if (Input.GetKey(KeyCode.Space) ) {
 //             rb.AddForce(0, jumpForce * Time.deltaTime, 0, ForceMode.VelocityChange);
 //         }
