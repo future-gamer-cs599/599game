@@ -36,9 +36,16 @@ public class PlayerMovement : MonoBehaviour
         // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, movementVec3, TurnSpeed * Time.deltaTime, 0f);
         // playerRotation = Quaternion.LookRotation(desiredForward);
 
-        movementVec3.Set(0, 0, 1f);
-
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+        movementVec3.Set(0, 0, 0f);
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+            // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+             movementVec3.Set(0f, 0, 1f);
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+            // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+             movementVec3.Set(0f, 0, -1f);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
              movementVec3.Set(1f, 0, 1f);
         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
