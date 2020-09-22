@@ -37,21 +37,20 @@ public class PlayerMovement : MonoBehaviour
         // playerRotation = Quaternion.LookRotation(desiredForward);
 
         movementVec3.Set(0, 0, 0f);
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-            // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-             movementVec3.Set(0f, 0, 1f);
-        }
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-            // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-             movementVec3.Set(0f, 0, -1f);
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            // playerRigidbody.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-             movementVec3.Set(1f, 0, 1f);
+        // move left or right
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+            movementVec3.x = 1f;
         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            // playerRigidbody.AddForce(-SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            movementVec3.Set(-1f, 0, 1f);
+            movementVec3.x = -1f;
         }
+
+        // move forward or backward
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+            movementVec3.z = 1f;
+        } else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+            movementVec3.z = -1f;
+        }
+
         movementVec3.Normalize();
         playerAnimator.SetBool("IsWalking", true);
 
