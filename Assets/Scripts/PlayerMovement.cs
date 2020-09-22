@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         // playerRotation = Quaternion.LookRotation(desiredForward);
 
         movementVec3.Set(0, 0, 0f);
+
         // move left or right
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             movementVec3.x = 1f;
