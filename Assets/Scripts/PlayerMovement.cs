@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, movementVec3, TurnSpeed * Time.deltaTime, 0f);
         // playerRotation = Quaternion.LookRotation(desiredForward);
 
+        // test merge to final-test
+
         movementVec3.Set(0, 0, 0f);
 
         // move left or right
