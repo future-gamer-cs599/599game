@@ -4,7 +4,6 @@ using System;
 
 public class Score : MonoBehaviour
 {
-    public Transform player; // use Transform instead of GameObject bc only interested in position only
     public Text scoreText;
     private DateTime startTime;
 
