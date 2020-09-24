@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 2f;
     public GameObject levelCompleteUI;
 
+    public bool getGameEnded() {
+        return gameEnded;
+    }
+
     public void completeLevel() {
         Debug.Log("complete level");
         levelCompleteUI.SetActive(true);
