@@ -1,7 +1,7 @@
 # 599 Demo
 
-## group members
-GroupA: Yongcheng, James, Hao Sun, Fiona, Francis, Jianchen Gao
+## Group members
+GroupA: Yongcheng, James, Hao Sun, Fiona, Francis, Jianchen Gao<br>
 GroupB: Tianhui, Yini, Qingyuan Sun, Chang Chen
 
 ## See how to merge your branch to 'final-test'
