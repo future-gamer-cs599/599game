@@ -1,30 +1,27 @@
-# 599 Demo
-Yini Li, James, Yongcheng
+# CS599 Project: Team Future Gamer
 
-Followed tutorial: https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6&index=1 
+### Current Build:
+Midterm Prototype (due 9-28)
 
-**Scenes**
-* welcome (menu)
-* goodbye
-* 3 levels
+## Members:
 
-**Description**
-* Very simple levels with basic movement and jump functions.
-* The player automatically runs forward on the race track when the game starts
-* If the player collides with an obstacle or fall off the track, the player loses and the game automatically restarts
-* If the player runs through the race track without hitting any obstacles, this level is considered completed. A "level complete!" panel appears and the game automatically loads the next level or the goodbye scene
-* The score on the upper left corner is just how far the player has run.
+Chang Chen,
+Shuo Chen,
+Jianchen Gao,
+Yini Li,
+Hao Sun,
+Qingyuan Sun,
+Fiona Tang,
+Yongcheng Wang,
+Fangbo Xu,
+Tianhui Yang
 
-**Takeaways from this tutorial**
-* Set up a game from start to end with transitions between the scenes
-* Make the camera follow the player's position without rotating with the player
-* Simple scripts to monitor player movement, the camera, etc
-* Use settings in the inspector to control how the objects collide
-* Add fog so that the player can't see all the obstacles form the beginning of the game
-* Animation recording
-* ...
+## Summary:
+This game will be a level-based single-player, where the player will have to run, jump, and sidestep incoming obstacles with obstacles getting more challenging as you progress in levels. 
 
-**Need to add in this game**
-* Rolling spheres
-* Features that the professor talked about. My thought: at some point of the game the race track turns upside down and the obstacles starts falling off from above, and the player will need to avoid them or lose. The score that the player has accumulated so far can be used to trade for shields. Or the obstacles falls down to become bonus points, and the player can collect the bonus points.
-* More
+## Goal: 
+Finish each level without hitting any obstacles before the timer runs out
+
+## Genre: 
+Obstacle Challenge
+
