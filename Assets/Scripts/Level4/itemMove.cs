@@ -31,7 +31,7 @@ public class itemMove : MonoBehaviour
     IEnumerator upDown() {
         for (int i =1; i>0; i++)
         {
-            print("hello");
+            // print("hello");
             yield return new WaitForSeconds(1f);
             moveUp = false;
             yield return new WaitForSeconds(1f);

@@ -6,9 +6,14 @@ public class PlayerCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision other){
         if (other.collider.tag == "Obstacle") {
-            Debug.Log("obstacle encountered");
+            Debug.Log("It hurts! I'm colliding with: " + other.collider.name);
             movement.enabled = false;
             FindObjectOfType<GameManager>().EndGame();
+        }
+        else if (other.collider.tag == "Block") {
+        	Debug.Log("Wrong way! I'm walking towards: " + other.collider.name);
+            // movement.enabled = false;
+            // FindObjectOfType<GameManager>().EndGame();
         }
     }
 }

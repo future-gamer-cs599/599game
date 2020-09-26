@@ -5,9 +5,9 @@ using UnityEngine;
 public class StretchingMovement : MonoBehaviour
 {
 	public bool isStretching = false;
-	public float stretchingSpeed = 6f;
+	public float stretchingSpeed = 5f;
     public float cycleTime = 2f;
-    public float maxScale = 15f;
+    public float maxScale = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +18,20 @@ public class StretchingMovement : MonoBehaviour
     void FixedUpdate()
     {
         float scaleChange = (isStretching) ? stretchingSpeed*Time.deltaTime : -stretchingSpeed*Time.deltaTime;
+        Vector3 newScale = transform.localScale + new Vector3(scaleChange,0,0);
         transform.localScale += new Vector3(scaleChange,0,0);
         transform.localPosition += new Vector3(scaleChange/2,0,0);
-        if (transform.localScale[0] >= maxScale)
+        if (newScale[0] >= maxScale)
         {
             isStretching = false;
+            newScale[0] = maxScale;
+            transform.localScale = newScale;
         }
-        else if (transform.localScale[0] <= 0)
+        else if (newScale[0] <= 0)
         {
             isStretching = true;
+            newScale[0] = 0;
+            transform.localScale = newScale;
         }
     }
 
