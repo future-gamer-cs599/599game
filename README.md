@@ -2,6 +2,7 @@
 
 ### Current Build:
 Midterm Prototype (due 9-28)
+WebGl Link: https://future-gamer-cs599.github.io/599game/
 
 ## Members:
 
