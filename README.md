@@ -25,3 +25,7 @@ Finish each level without hitting any obstacles before the timer runs out
 ## Genre: 
 Obstacle Challenge
 
+## Addtional Info:
+See how to merge your branch to 'final-test'
+https://docs.google.com/document/d/1Kx3nk_tu7jfKY0-iVAGAjp-JBSHS9D2a4-K_fKLMolY/edit
+

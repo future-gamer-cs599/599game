@@ -37,6 +37,11 @@ public class PlayerMoveForward : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) {
             Jump();
         }
+
+        // if the player falls off, restart the game
+        if (playerRigidbody.position.y < -0.5f) {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     void OnAnimatorMove()

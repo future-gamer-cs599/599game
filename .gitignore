@@ -5,8 +5,6 @@
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
@@ -61,5 +59,10 @@ crashlytics-build.properties
 #vscode files
 /.vscode/
 
+#macOS files
+.DS_Store 
+*/.DS_Store 
+**/.DS_Store 
+*/*/.DS_Store 
 
 

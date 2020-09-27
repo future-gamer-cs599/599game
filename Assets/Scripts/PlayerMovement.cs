@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, movementVec3, TurnSpeed * Time.deltaTime, 0f);
         // playerRotation = Quaternion.LookRotation(desiredForward);
 
+        // test merge to final-test
+
         movementVec3.Set(0, 0, 0f);
 
         // move left or right
@@ -57,6 +59,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space)) {
             Jump();
+        }
+
+        // if the player falls off, restart the game
+        if (playerRigidbody.position.y < -0.5f) {
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 
