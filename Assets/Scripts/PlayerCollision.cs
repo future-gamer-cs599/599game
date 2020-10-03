@@ -13,10 +13,9 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("It hurts! I'm colliding with: " + other.collider.name);
             movement.enabled = false;
 
-            // Log in anaytics
-            AnalyticsResult analyticsResult = Analytics.CustomEvent(
+            // Analytics Log: level, obstacle, distance of player loss
+            AnalyticsResult lossAnalytics = Analytics.CustomEvent(
                 "LevelLost", new Dictionary<string, object> {
-                    // add level //
                     { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
                     { "Obstacle", other.collider.name},
                     { "X", GetComponent<Transform>().position.x },
@@ -24,13 +23,13 @@ public class PlayerCollision : MonoBehaviour
                     { "Z", GetComponent<Transform>().position.z }
             });
 
-            // Debug analytics log
-            Debug.Log("CustomEvent LevelLost sent: " + analyticsResult);
-            Debug.Log("Level: " + (SceneManager.GetActiveScene().buildIndex - 1).ToString());
-            Debug.Log("Obstacle: " + other.collider.name);
-            Debug.Log("X: " + GetComponent<Transform>().position.x);
-            Debug.Log("Y: " + GetComponent<Transform>().position.y);
-            Debug.Log("Z: " + GetComponent<Transform>().position.z);
+            // Debug: analytics
+            Debug.Log("CustomEvent LevelLost sent: " + lossAnalytics);
+            // Debug.Log("Level: " + (SceneManager.GetActiveScene().buildIndex - 1).ToString());
+            // Debug.Log("Obstacle: " + other.collider.name);
+            // Debug.Log("X: " + GetComponent<Transform>().position.x);
+            // Debug.Log("Y: " + GetComponent<Transform>().position.y);
+            // Debug.Log("Z: " + GetComponent<Transform>().position.z);
 
             FindObjectOfType<GameManager>().EndGame();
         }
