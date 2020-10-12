@@ -7,38 +7,51 @@ public class GroundManager : MonoBehaviour
     public Transform player;
     public Rigidbody fallingBall;
     public Rigidbody rollingBall;
-    public float xOffset = 3f;
-    public float yOffsetMin = 2f;
-    public float yOffsetMax = 10f;
-    public float zOffset = 5f;
-    public float fallingStart = 0.5f;
-    public float fallingRate = 0.4f;
-    public float fallingDuration = 5f;
-    public float rollingStart = 7f;
-    public float rollingRate = 1f;
-    public float rollingDuration = 5f;
-    public float xForce = 2f;
-    public float yForce = 0f;
-    public float zForce = 0f;
-    public List<Rigidbody> rollingBalls;
-    public List<int> rollingForces;
-    public List<Vector3> rollingForceOptions;
-    // bool rollingStarted = false;
+    bool fallingStarted = false;
+    bool rollingStarted = false;
+    float xOffset = 3f;
+    float yOffsetMin = 2f;
+    float yOffsetMax = 4f;
+    float zOffset = 8f;
+    float fallingStart = 0.3f;
+    float fallingRate = 0.5f;
+    float rollingRate = 1f;
+    int fallStop = 180;
+    int rollStop = 350;
+    List<Rigidbody> rollingBalls = new List<Rigidbody>();
+    List<int> rollingForces = new List<int>();
+    List<Vector3> rollingForceOptions = new List<Vector3>();
+    Vector3 previousPlayerPosition;
     
     // Start is called before the first frame update
     void Start()
     {
+        rollingBalls = new List<Rigidbody>();
         player = GameObject.Find("Player").transform;
         InvokeRepeating("SpawnFalling", fallingStart, fallingRate);
-        InvokeRepeating("SpawnRolling", rollingStart, rollingRate);
-        StartCoroutine("StopFalling");
-        StartCoroutine("StopRolling");
         rollingForceOptions.Add(new Vector3(-10, 0, 0));
         rollingForceOptions.Add(new Vector3(10, 0, 0));
         rollingForceOptions.Add(new Vector3(-20, 0, 0));
         rollingForceOptions.Add(new Vector3(20, 0, 0));
     }
 
+    void Update() {
+        if (FindObjectOfType<GameManager>().getGameEnded()) {
+            CancelInvoke("SpawnFalling");
+            CancelInvoke("SpawnRolling");
+        }
+        if (player.position.z >= fallStop) {
+            // StopFalling
+            CancelInvoke("SpawnFalling");
+            if (!rollingStarted) {
+                rollingStarted = true;
+                InvokeRepeating("SpawnRolling", 1f, rollingRate);
+            }
+        } else if (player.position.z >= rollStop) {
+            // StopRolling
+            CancelInvoke("SpawnRolling");
+        }
+    }
 
     void FixedUpdate() {
         for (int i = 0; i < rollingBalls.Count; i ++) {
@@ -54,36 +67,26 @@ public class GroundManager : MonoBehaviour
 
     void SpawnRolling() {
         Vector3 playerPostion = player.transform.position;
-        Rigidbody ball = Instantiate(rollingBall, new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), 1, playerPostion.z + zOffset), Quaternion.identity);
-        rollingBalls.Add(ball);
-        rollingForces.Add(Random.Range(0, rollingForceOptions.Count));
+        if (previousPlayerPosition.z != playerPostion.z) {
+            Rigidbody ball = Instantiate(rollingBall, new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), 1, playerPostion.z + zOffset + 5), Quaternion.identity);
+            rollingBalls.Add(ball);
+            rollingForces.Add(Random.Range(0, rollingForceOptions.Count));
+            previousPlayerPosition = playerPostion;
+        }
     }
-
-    IEnumerator StopRolling() {
-        yield return new WaitForSeconds(rollingStart + rollingDuration);
-        CancelInvoke("SpawnRolling");
-    }
-
-    IEnumerator StopFalling() {
-        yield return new WaitForSeconds(fallingStart + fallingDuration);
-        CancelInvoke("SpawnFalling");
-    }
-
 
     void SpawnFalling() {
         Vector3 playerPostion = player.position;
-        Instantiate(fallingBall, new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
+        if (!fallingStarted) {
+            fallingStarted = true;
+            Instantiate(fallingBall, new Vector3(playerPostion.x -xOffset, Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
+            return;
+        }
+        if (previousPlayerPosition.z != playerPostion.z) {
+            Instantiate(fallingBall, new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
+            previousPlayerPosition = playerPostion;
+        }
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // if the player fails, stop current routine and all scheduled coroutines
-        if (FindObjectOfType<GameManager>().getGameEnded()) {
-            CancelInvoke("SpawnFalling");
-            CancelInvoke("SpawnRolling");
-            StopCoroutine("StopFalling");
-            StopCoroutine("StopRolling");
-        }
-    }
 }
