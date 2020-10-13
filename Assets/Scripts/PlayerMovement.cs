@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         // if the player falls off, restart the game
         if (playerRigidbody.position.y < -0.5f) {
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().EndGame("Fell");
         }
     }
 
