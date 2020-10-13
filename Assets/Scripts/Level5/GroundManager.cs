@@ -14,7 +14,7 @@ public class GroundManager : MonoBehaviour
     float yOffsetMax = 4f;
     float zOffset = 8f;
     float fallingStart = 0.3f;
-    float fallingRate = 0.7f;
+    float fallingRate = 0.4f;
     float rollingRate = 1f;
     int fallStop = 180;
     int rollStop = 350;
