@@ -9,12 +9,12 @@ public class GroundManager : MonoBehaviour
     public Rigidbody rollingBall;
     bool fallingStarted = false;
     bool rollingStarted = false;
-    float xOffset = 3f;
+    float xOffset = 4f;
     float yOffsetMin = 2f;
     float yOffsetMax = 4f;
     float zOffset = 8f;
     float fallingStart = 0.3f;
-    float fallingRate = 0.5f;
+    float fallingRate = 0.7f;
     float rollingRate = 1f;
     int fallStop = 180;
     int rollStop = 350;
@@ -79,7 +79,7 @@ public class GroundManager : MonoBehaviour
         Vector3 playerPostion = player.position;
         if (!fallingStarted) {
             fallingStarted = true;
-            Instantiate(fallingBall, new Vector3(playerPostion.x -xOffset, Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
+            Instantiate(fallingBall, new Vector3(playerPostion.x - 3f, Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
             return;
         }
         if (previousPlayerPosition.z != playerPostion.z) {
