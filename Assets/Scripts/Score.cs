@@ -13,7 +13,9 @@ public class Score : MonoBehaviour
     }
     void Update()
     {
-        TimeSpan span = (TimeSpan)(DateTime.Now - startTime);
-        scoreText.text = String.Format("Time: {0}.{1} s", span.Seconds, span.Milliseconds); 
+        if(!FindObjectOfType<GameManager>().getGameEnded()) {
+            TimeSpan span = (TimeSpan)(DateTime.Now - startTime);
+            scoreText.text = String.Format("Time: {0}.{1} s", span.Seconds, span.Milliseconds); 
+        }
     }
 }
