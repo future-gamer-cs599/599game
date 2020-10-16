@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 using TMPro;
 
 public class LevelSelectorScreen : MonoBehaviour
@@ -72,7 +73,7 @@ public class LevelSelectorScreen : MonoBehaviour
     }
 
     void InitializeLevels() {
-        int levelAt = PlayerPrefs.GetInt("levelAt", 2);
+        int levelAt = PlayerPrefs.GetInt("levelAt", 1);
 
         for (int i = 0; i < levelButtons.Count; i++) {
             Button btn = levelButtons[i].GetComponent<Button>();
@@ -82,7 +83,7 @@ public class LevelSelectorScreen : MonoBehaviour
             
             // Lock levels except first
             if (!unlockLevels) {
-                if (i + 2 > levelAt) {
+                if (i + 1 > levelAt) {
                     btn.interactable = false;
                 }
             }
@@ -91,6 +92,18 @@ public class LevelSelectorScreen : MonoBehaviour
 
     void LinkLevel(Button levelButton) {
         int levelNum = Convert.ToInt32(levelButton.name);
+
+        //// Analytics Log: level open
+        AnalyticsResult openAnalytics = Analytics.CustomEvent(
+            "LevelOpen", new Dictionary<string, object> {
+                { "Level", levelButton.name}
+            }
+        );
+
+        // Debug: analytics
+        Debug.Log("CustomEvent LevelOpen sent: " + openAnalytics);
+        Debug.Log(levelButton.name);
+
         SceneManager.LoadScene(levelNum + 1);
     }
 }

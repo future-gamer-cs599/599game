@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -63,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         // if the player falls off, restart the game
         if (playerRigidbody.position.y < -0.5f) {
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().EndGame("Fell");
         }
     }
 
@@ -81,6 +83,15 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.AddForce(Vector3.up * JumpSpeed);
             grounded = false;
         }
+
+        // Analytics Log: jump occurrences of a level
+        AnalyticsResult jumpAnalytics = Analytics.CustomEvent(
+            "Jump", new Dictionary<string, object> {
+                { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
+        });
+        // Debug: Analytics
+        Debug.Log("CustomEvent Jump sent: " + jumpAnalytics);
+
     }
 
     private void OnCollisionEnter(Collision collision)
