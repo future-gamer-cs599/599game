@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
@@ -12,7 +12,6 @@ public class PlayerCollision : MonoBehaviour
         if (other.collider.tag == "Obstacle") {
             Debug.Log("It hurts! I'm colliding with: " + other.collider.name);
             movement.enabled = false;
-
             FindObjectOfType<GameManager>().EndGame(other.collider.name);
         }
         else if (other.collider.tag == "Block") {

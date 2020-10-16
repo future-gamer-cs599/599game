@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 2144903465}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!1 &293717552
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1322841951}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!135 &474734365
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1994302439}
-  AroundSpeed: 1
+  AroundSpeed: 0.25
 --- !u!135 &878717411
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1551708254}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!135 &1105820088
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 474734363}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!135 &1322841953
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 2037534436}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!135 &1535735589
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1105820086}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!135 &1551708256
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2438,7 +2438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1535735587}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!135 &2037534438
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1749013060}
-  AroundSpeed: 1
+  AroundSpeed: 0.25
 --- !u!1 &2106284841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,7 +3033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 206199724}
-  AroundSpeed: 0.5
+  AroundSpeed: 0.25
 --- !u!1001 &1216622954361435933
 PrefabInstance:
   m_ObjectHideFlags: 0

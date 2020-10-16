@@ -7,9 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public float TurnSpeed = 20f;
-    public float JumpSpeed = 0.001f;
-    public float ForwardForce = 10f; // forward force in fixedupdate
-    public float SidewayForce = 1f; // force moving left or right
+    public float JumpSpeed = 300f;
     private bool grounded = true;
     Animator playerAnimator;
     Rigidbody playerRigidbody;
@@ -71,7 +69,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        playerRigidbody.MovePosition(playerRigidbody.position + 10 * movementVec3 * playerAnimator.deltaPosition.magnitude);
+        if(grounded) 
+            playerRigidbody.MovePosition(playerRigidbody.position + 8 * movementVec3 * playerAnimator.deltaPosition.magnitude);
+        else 
+            playerRigidbody.MovePosition(playerRigidbody.position + 4 * movementVec3 * playerAnimator.deltaPosition.magnitude);
         playerRigidbody.MoveRotation(playerRotation);
     }
 
