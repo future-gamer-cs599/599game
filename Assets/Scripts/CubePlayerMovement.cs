@@ -103,7 +103,7 @@ public class CubePlayerMovement : MonoBehaviour
 
         // if the player falls off, restart the game
         if (rb.position.y < -1f) {
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().EndGame("Fell");
         }
     }
 }
