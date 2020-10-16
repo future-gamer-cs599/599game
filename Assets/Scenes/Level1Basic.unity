@@ -603,6 +603,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1189494573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 683349519063949483, guid: 74362093b05e0a34e8acf20db768179f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7237503124158546192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1231126708
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -924,6 +930,11 @@ PrefabInstance:
       propertyPath: levelCompleteUI
       value: 
       objectReference: {fileID: 1624076106}
+    - target: {fileID: 1948106829285886564, guid: 6ac60cadc052948048d23a1d4fc5066c,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1189494573}
     - target: {fileID: 1948106829285886565, guid: 6ac60cadc052948048d23a1d4fc5066c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1191,6 +1202,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 683349519063949483, guid: 74362093b05e0a34e8acf20db768179f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1434603266002991264, guid: 74362093b05e0a34e8acf20db768179f,
         type: 3}

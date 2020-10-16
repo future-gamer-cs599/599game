@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 36912924328563845}
   - component: {fileID: 36912924328563846}
   - component: {fileID: 36912924328563847}
-  - component: {fileID: 36912924328563844}
+  - component: {fileID: 3252218934660040449}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36912924328563844}
-        m_TargetAssemblyTypeName: ExitHome, Assembly-CSharp
+      - m_Target: {fileID: 3252218934660040449}
+        m_TargetAssemblyTypeName: ExitLevel, Assembly-CSharp
         m_MethodName: Home
         m_Mode: 1
         m_Arguments:
@@ -212,7 +212,7 @@ MonoBehaviour:
           m_StringArgument: Home(1)
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &36912924328563844
+--- !u!114 &3252218934660040449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 36912924328563961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d66d849b81b4f400cb77fe918b07cda4, type: 3}
+  m_Script: {fileID: 11500000, guid: f505c903837a54c409f850404b54ff55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelScreenIndex: 1
