@@ -16,11 +16,26 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void EndGame() {
+    public void EndGame(string endReason) {
         // use gameEnded varibale so that line 11 is executed only once
         if (!gameEnded) {
             gameEnded = true;
             Debug.Log("Game Over!");
+
+            // Analytics Log: Level lost by failling
+            GameObject player = GameObject.Find("Player");
+            AnalyticsResult lossAnalytics = Analytics.CustomEvent(
+                "LevelLost", new Dictionary<string, object> {
+                    { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
+                    { "Obstacle", endReason},
+                    { "X", player.GetComponent<Transform>().position.x },
+                    { "Y", player.GetComponent<Transform>().position.y },
+                    { "Z", player.GetComponent<Transform>().position.z }
+            });
+            // Debug: analytics
+            Debug.Log("CustomEvent LevelLost sent: " + lossAnalytics);
+             Debug.Log("CustomEvent player x sent: " + player.GetComponent<Transform>().position.x );
+
             Invoke("Restart", restartDelay);
         }
         
