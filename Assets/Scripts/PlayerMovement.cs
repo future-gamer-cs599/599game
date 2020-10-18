@@ -1,14 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
     public float TurnSpeed = 20f;
-    public float JumpSpeed = 300f;
+    public float JumpSpeed = 0.001f;
+    public float ForwardForce = 10f; // forward force in fixedupdate
+    public float SidewayForce = 1f; // force moving left or right
+    public bool goForward;
     private bool grounded = true;
+    private bool isMoving;
+    private bool isCrouched;
+    private Vector3 playerPos;
+    private float crouchTime = 0.0f;
+    
     Animator playerAnimator;
     Rigidbody playerRigidbody;
     Vector3 movementVec3;
@@ -18,10 +26,18 @@ public class PlayerMovement : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+        instance = this;
+        playerPos = transform.transform.position;
     }
 
+    void Update()
+    {
+
+    }
     void FixedUpdate()
     {
+        goForward = false;
+        isMoving = false;
         // float horizontal = Input.GetAxis("Horizontal");
         // float vertical = Input.GetAxis("Vertical");
 
@@ -36,22 +52,25 @@ public class PlayerMovement : MonoBehaviour
         // Vector3 desiredForward = Vector3.RotateTowards(transform.forward, movementVec3, TurnSpeed * Time.deltaTime, 0f);
         // playerRotation = Quaternion.LookRotation(desiredForward);
 
-        // test merge to final-test
-
         movementVec3.Set(0, 0, 0f);
 
         // move left or right
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))&&!isCrouched) {
             movementVec3.x = 1f;
-        } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            isMoving = true;
+        } else if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && !isCrouched) {
             movementVec3.x = -1f;
+            isMoving = true;
         }
 
         // move forward or backward
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && !isCrouched) {
             movementVec3.z = 1f;
-        } else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+            isMoving = true;
+            goForward = true;
+        } else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) )&& !isCrouched) {
             movementVec3.z = -1f;
+            isMoving = true;
         }
 
         movementVec3.Normalize();
@@ -60,19 +79,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) {
             Jump();
         }
+        Crouch();
 
-        // if the player falls off, restart the game
-        if (playerRigidbody.position.y < -0.5f) {
-            FindObjectOfType<GameManager>().EndGame("Fell");
-        }
     }
 
     void OnAnimatorMove()
     {
-        if(grounded) 
-            playerRigidbody.MovePosition(playerRigidbody.position + 8 * movementVec3 * playerAnimator.deltaPosition.magnitude);
-        else 
-            playerRigidbody.MovePosition(playerRigidbody.position + 4 * movementVec3 * playerAnimator.deltaPosition.magnitude);
+        playerRigidbody.MovePosition(playerRigidbody.position + 10 * movementVec3 * playerAnimator.deltaPosition.magnitude);
         playerRigidbody.MoveRotation(playerRotation);
     }
 
@@ -84,15 +97,39 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.AddForce(Vector3.up * JumpSpeed);
             grounded = false;
         }
+    }
 
-        // Analytics Log: jump occurrences of a level
-        AnalyticsResult jumpAnalytics = Analytics.CustomEvent(
-            "Jump", new Dictionary<string, object> {
-                { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
-        });
-        // Debug: Analytics
-        Debug.Log("CustomEvent Jump sent: " + jumpAnalytics);
+    private void Crouch()
+    {
+        isCrouched = false;
+        if (grounded && isMoving == false && Input.GetKey(KeyCode.LeftControl))
+        {
+            isCrouched = true;
+            transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
+        }
+        else if (grounded && isMoving == true && Input.GetKey(KeyCode.LeftControl) && (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow)))
+        {
 
+            transform.eulerAngles = new Vector3(90, 0, 0);
+            transform.Translate(0, 0, 25*Time.deltaTime,Space.World);
+            crouchTime += Time.deltaTime;
+            if (crouchTime >= 1.0f)
+            {
+                crouchTime = 0.0f;
+                grounded = false;
+                return;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            crouchTime = 0.0f;
+        }
+        //else if(grounded && isMoving == false && Input.GetKeyUp(KeyCode.LeftControl))
+        //{
+        //    transform.position = new Vector3(transform.position.x, playerPos.y, transform.position.z);
+        //    isCrouched = false;
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)

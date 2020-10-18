@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - LevelComplete
-  - Block
+  - GameManager
+  - CanKill
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - NotIsChui
   - 
   - 
   - 

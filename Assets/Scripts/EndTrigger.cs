@@ -1,40 +1,36 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Analytics;
+
 public class EndTrigger : MonoBehaviour
 {
-    public GameManager gameManager;
-    public float timeStart;
-    bool updateTimer = true;
+    private GameManager gameManager;
+    public GameObject completeUI;
 
-    void Update()
+    void Start()
     {
-        if (updateTimer)
-        {
-            timeStart += Time.deltaTime;
-        }
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Collider>().name == "Player")
+        if (this.gameObject.transform.name == "END")
         {
-            updateTimer = false;
-            Debug.Log("end hit");
-            gameManager.completeLevel();
+            if (other.GetComponent<Collider>().name == "Player")
+            {
+
+                Debug.Log("end hit");
+                completeUI.SetActive(true);
+                gameManager.completeLevel();
+            }
         }
+        else
+        {
 
-        AnalyticsResult timeAnalytics = Analytics.CustomEvent(
-               "LevelTimeCost", new Dictionary<string, object> {
-                    { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
-                    { "Time", timeStart}
-               });
-
-        Debug.Log("CustomEvent LevelTime sent: " + timeAnalytics);
-
-  
-        
+            gameManager.EndGame();
+            FindObjectOfType<PlayerMovement>().enabled = false;
+            FindObjectOfType<PlayerMoveForward>().enabled = false;
+        }
     }
 }
