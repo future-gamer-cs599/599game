@@ -9,6 +9,7 @@ public class PlayerMoveForward : MonoBehaviour
     public float ForwardForce = 10f; // forward force in fixedupdate
     public float SidewayForce = 1f; // force moving left or right
     private bool grounded = true;
+    private bool isCouch = false;//判断人物是否处在下蹲状态
     Animator playerAnimator;
     Rigidbody playerRigidbody;
     Vector3 movementVec3;
@@ -24,11 +25,17 @@ public class PlayerMoveForward : MonoBehaviour
     {
         movementVec3.Set(0, 0, 1f);
 
-        // move left or right
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            movementVec3.x = 1f;
-        } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            movementVec3.x = -1f;
+        if (!isCouch)//若下蹲则无法左右移动
+        {
+            // move left or right
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                movementVec3.x = 1f;
+            }
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                movementVec3.x = -1f;
+            }
         }
 
         movementVec3.Normalize();
@@ -38,10 +45,7 @@ public class PlayerMoveForward : MonoBehaviour
             Jump();
         }
 
-        // if the player falls off, restart the game
-        if (playerRigidbody.position.y < -0.5f) {
-            FindObjectOfType<GameManager>().EndGame("Fell");
-        }
+        Crouch();
     }
 
     void OnAnimatorMove()
@@ -56,6 +60,16 @@ public class PlayerMoveForward : MonoBehaviour
         {
             playerRigidbody.AddForce(Vector3.up * JumpSpeed);
             grounded = false;
+        }
+    }
+
+    private void Crouch()//下蹲函数
+    {
+        isCouch = false;
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            transform.eulerAngles=new Vector3(90,0,0);
+            isCouch = true;
         }
     }
 
