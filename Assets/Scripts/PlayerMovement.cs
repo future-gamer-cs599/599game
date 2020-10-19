@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float GroundSpeed = 8f;
+    public float AirSpeed = 4f;
     public float TurnSpeed = 20f;
     public float JumpSpeed = 300f;
     private bool grounded = true;
@@ -70,9 +72,9 @@ public class PlayerMovement : MonoBehaviour
     void OnAnimatorMove()
     {
         if(grounded) 
-            playerRigidbody.MovePosition(playerRigidbody.position + 8 * movementVec3 * playerAnimator.deltaPosition.magnitude);
+            playerRigidbody.MovePosition(playerRigidbody.position + GroundSpeed * movementVec3 * playerAnimator.deltaPosition.magnitude);
         else 
-            playerRigidbody.MovePosition(playerRigidbody.position + 4 * movementVec3 * playerAnimator.deltaPosition.magnitude);
+            playerRigidbody.MovePosition(playerRigidbody.position + AirSpeed * movementVec3 * playerAnimator.deltaPosition.magnitude);
         playerRigidbody.MoveRotation(playerRotation);
     }
 
@@ -100,48 +102,3 @@ public class PlayerMovement : MonoBehaviour
         grounded = true;
     }
 }
-
-// base movement script by yini and jeff
-
-// public class PlayerMovement : MonoBehaviour
-// {
-//     public Rigidbody rb; // the player rigidbody
-//     public float initialForwardForce = 2000f;
-//     public float ForwardForce = 10f; // forward force in fixedupdate
-//     public float SidewayForce = 1f; // force moving left or right
-//     public float jumpForce = 10f; // forward force in fixedupdate
-//     public GameObject ground;
-//     public float forwardSpeed = 20f;
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         // rb.AddForce(0, 200, 500);
-//     }
-
-//     // Update is called once per frame
-//     // use FixedUpdate for physics (add force, etc)
-//     void FixedUpdate()
-//     {
-//         // consider frame rate (different computers have different frame rate)
-//         // use Time.deltaTime to even out the differences
-//         rb.AddForce(0, 0, initialForwardForce * Time.deltaTime);
-
-//         // use WASD and up down left right to control the player movement  
-//         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-//             rb.AddForce(SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-//         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-//             rb.AddForce(-SidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-//         // } else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-//         //     rb.AddForce(0, 0, ForwardForce * Time.deltaTime, ForceMode.VelocityChange);
-//         // } else if (Input.GetKey(KeyCode.S) ||  Input.GetKey(KeyCode.DownArrow)) {
-//         //     rb.AddForce(0, 0, -ForwardForce * Time.deltaTime, ForceMode.VelocityChange);
-//         } else if (Input.GetKey(KeyCode.Space) ) {
-//             rb.AddForce(0, jumpForce * Time.deltaTime, 0, ForceMode.VelocityChange);
-//         }
-
-//         // if the player falls off, restart the game
-//         if (rb.position.y < -1f) {
-//             FindObjectOfType<GameManager>().EndGame();
-//         }
-//     }
-// }
