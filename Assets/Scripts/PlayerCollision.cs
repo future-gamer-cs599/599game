@@ -18,6 +18,10 @@ public class PlayerCollision : MonoBehaviour
         	Debug.Log("Wrong way! I'm walking towards: " + other.collider.name);
             // movement.enabled = false;
             // FindObjectOfType<GameManager>().EndGame();
+        }  else {
+        	Debug.Log("I'm walking towards: " + other.collider.name);
+            // movement.enabled = false;
+            // FindObjectOfType<GameManager>().EndGame();
         }
     }
 }
