@@ -19,9 +19,8 @@ public class PlayerCollision : MonoBehaviour
             // movement.enabled = false;
             // FindObjectOfType<GameManager>().EndGame();
         }  else {
+            Debug.Log("Friction test");
         	Debug.Log("I'm walking towards: " + other.collider.name);
-            // movement.enabled = false;
-            // FindObjectOfType<GameManager>().EndGame();
         }
     }
 }
