@@ -15,11 +15,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRigidbody;
     Vector3 movementVec3;
     Quaternion playerRotation = Quaternion.identity;
+    protected JoyButton joybutton;
+    protected Joystick joystick;
 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+        joystick = FindObjectOfType<Joystick>();
+        joybutton = FindObjectOfType<JoyButton>();
     }
 
     void FixedUpdate()
