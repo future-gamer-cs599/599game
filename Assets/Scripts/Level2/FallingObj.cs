@@ -18,6 +18,7 @@ public class FallingObj : MonoBehaviour
     void Spawn()
     {
         Vector3 playerPostion = player.transform.position;
-        Instantiate(fallingObj, new Vector3(playerPostion.x + Random.Range(-6,6), 4, playerPostion.z + 15), Quaternion.identity);
+        // Instantiate(fallingObj, new Vector3(playerPostion.x + Random.Range(-6,6), 4, playerPostion.z + 15), Quaternion.identity);
+        Instantiate(fallingObj, new Vector3(playerPostion.x + Random.Range(-6,6), 4, playerPostion.z + 15), new Quaternion(0, Random.Range(0,90), Random.Range(0,90), Random.Range(0,90)));
     }
 }
