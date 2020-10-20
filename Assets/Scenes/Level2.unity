@@ -276,10 +276,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99385283}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.1500001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.6245117, y: -3.008657, z: 28.9}
+  m_LocalScale: {x: 20, y: 1, z: 70}
   m_Children: []
-  m_Father: {fileID: 1047319245}
+  m_Father: {fileID: 865066312}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &113584726 stripped
@@ -541,7 +541,7 @@ Transform:
   - {fileID: 2130521738}
   - {fileID: 1880635673}
   m_Father: {fileID: 1573544900}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &449270074
 PrefabInstance:
@@ -926,6 +926,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 99385287}
   - {fileID: 1047319245}
   m_Father: {fileID: 1573544900}
   m_RootOrder: 9
@@ -1090,10 +1091,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.6245117, y: -3.008657, z: -44.704735}
   m_LocalScale: {x: 20, y: 1, z: 60}
-  m_Children:
-  - {fileID: 99385287}
+  m_Children: []
   m_Father: {fileID: 865066312}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1068787266
 PrefabInstance:
@@ -1400,9 +1400,9 @@ Transform:
   - {fileID: 1754241519}
   - {fileID: 1863088650}
   - {fileID: 266092883}
+  - {fileID: 344586597}
   - {fileID: 686143603}
   - {fileID: 1174415729}
-  - {fileID: 344586597}
   - {fileID: 865066312}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1769,7 +1769,7 @@ PrefabInstance:
     - target: {fileID: 1216622955584692744, guid: e7a6b3c2595ac4332adbaa33be23e7ee,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 171.2
+      value: 111.3
       objectReference: {fileID: 0}
     - target: {fileID: 1216622955584692744, guid: e7a6b3c2595ac4332adbaa33be23e7ee,
         type: 3}
@@ -2091,7 +2091,7 @@ PrefabInstance:
     - target: {fileID: 4454806640183928268, guid: 4574a5c74b8b24cccbab3b0d4b14d3ab,
         type: 3}
       propertyPath: m_Text
-      value: Level FallingObj
+      value: Level 2
       objectReference: {fileID: 0}
     - target: {fileID: 4454806640183928269, guid: 4574a5c74b8b24cccbab3b0d4b14d3ab,
         type: 3}
