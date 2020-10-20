@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 1174689819592783244}
   - component: {fileID: 1434603266002991264}
   - component: {fileID: 1036969136614056444}
+  - component: {fileID: 910923898752834420}
   m_Layer: 0
   m_Name: JohnLemon
   m_TagString: Untagged
@@ -349,6 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850ca04ac5f03124bb2bc49ca04ad8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GroundSpeed: 8
+  AirSpeed: 4
   TurnSpeed: 20
   JumpSpeed: 300
 --- !u!114 &1036969136614056444
@@ -364,6 +367,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1434603266002991264}
+--- !u!114 &910923898752834420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683349519063949483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3e10c8ce9c24ae69130180820519e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  jumpSpeed: 8
+  MaxJumps: 1
 --- !u!1 &683349519063949485
 GameObject:
   m_ObjectHideFlags: 0
