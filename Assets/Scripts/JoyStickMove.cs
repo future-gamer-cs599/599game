@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewMove : MonoBehaviour
+public class JoyStickMove : MonoBehaviour
 {
     public float moveSpeed = 30f;
     public float jumpSpeed = 30f;

@@ -12,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelect.unity
     guid: ff0eff6d5c50d4d7eaa7966c0580f82d
   - enabled: 1
-    path: Assets/Scenes/Level1Basic.unity
+    path: Assets/Scenes/Level1Tutorial.unity
     guid: 5a6308fbeef18451c947236c5b524472
-  - enabled: 1
-    path: Assets/Scenes/Level2FallingObj.unity
+  - enabled: 0
+    path: Assets/Scenes/TianhuiMap2.unity
     guid: d4b7f5019c346c840b7288826d57592f
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 7468d96111ec84db0839ff6bff5d348b
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 4b8427bfe7a045f45b08a9fcd3174e3d
