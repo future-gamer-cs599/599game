@@ -2053,7 +2053,7 @@ PrefabInstance:
     - target: {fileID: 1739562159727551546, guid: 73c6b418147a84998a35646a64207481,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1739562159727551546, guid: 73c6b418147a84998a35646a64207481,
         type: 3}
@@ -3409,6 +3409,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 212908996040819444, guid: 4574a5c74b8b24cccbab3b0d4b14d3ab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4454806638704253699, guid: 4574a5c74b8b24cccbab3b0d4b14d3ab,
         type: 3}
       propertyPath: player
@@ -3539,6 +3544,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 118
       objectReference: {fileID: 0}
+    - target: {fileID: 5822484452066288886, guid: 4574a5c74b8b24cccbab3b0d4b14d3ab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923927697261938786, guid: 4574a5c74b8b24cccbab3b0d4b14d3ab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4574a5c74b8b24cccbab3b0d4b14d3ab, type: 3}
 --- !u!224 &4454806640572439176 stripped
@@ -3614,6 +3629,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 910923898752834420, guid: 74362093b05e0a34e8acf20db768179f,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 910923898752834420, guid: 74362093b05e0a34e8acf20db768179f,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1434603266002991264, guid: 74362093b05e0a34e8acf20db768179f,
         type: 3}
       propertyPath: forwardForce
@@ -3622,22 +3647,27 @@ PrefabInstance:
     - target: {fileID: 1434603266002991264, guid: 74362093b05e0a34e8acf20db768179f,
         type: 3}
       propertyPath: JumpSpeed
-      value: 250
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1434603266002991264, guid: 74362093b05e0a34e8acf20db768179f,
         type: 3}
       propertyPath: ForwardForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1434603266002991264, guid: 74362093b05e0a34e8acf20db768179f,
+        type: 3}
+      propertyPath: GroundSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3625938062684111676, guid: 74362093b05e0a34e8acf20db768179f,
         type: 3}
       propertyPath: m_Drag
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3625938062684111676, guid: 74362093b05e0a34e8acf20db768179f,
         type: 3}
       propertyPath: m_AngularDrag
-      value: 5
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74362093b05e0a34e8acf20db768179f, type: 3}
