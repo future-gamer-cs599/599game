@@ -30,13 +30,13 @@ public class EndTrigger : MonoBehaviour
             gameManager.completeLevel();
         }
 
-        AnalyticsResult timeAnalytics = Analytics.CustomEvent(
-               "LevelTimeCost", new Dictionary<string, object> {
-                    { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
-                    { "Time", timeStart}
-               });
+        // AnalyticsResult timeAnalytics = Analytics.CustomEvent(
+        //        "LevelTimeCost", new Dictionary<string, object> {
+        //             { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
+        //             { "Time", timeStart}
+        //        });
 
-        Debug.Log("CustomEvent LevelTime sent: " + timeAnalytics);
+        // Debug.Log("CustomEvent LevelTime sent: " + timeAnalytics);
 
   
         

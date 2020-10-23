@@ -216,7 +216,7 @@ MonoBehaviour:
   thisCanvas: {fileID: 1426789656}
   numberOfLevels: 5
   buttonSpacing: {x: 10, y: 10}
-  unlockLevels: 0
+  unlockLevels: 1
 --- !u!1 &1377417461
 GameObject:
   m_ObjectHideFlags: 0
