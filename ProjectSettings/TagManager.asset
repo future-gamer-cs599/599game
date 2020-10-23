@@ -9,6 +9,7 @@ TagManager:
   - Block
   - instructionTag
   - dead
+  - backgroundMusic
   layers:
   - Default
   - TransparentFX
