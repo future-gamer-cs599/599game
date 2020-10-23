@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - LevelComplete
   - Block
+  - instructionTag
+  - dead
   layers:
   - Default
   - TransparentFX

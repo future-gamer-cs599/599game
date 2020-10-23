@@ -73,19 +73,6 @@ public class LevelSelectorScreen : MonoBehaviour
     }
 
     void InitializeLevels() {
-        if (!PlayerPrefs.HasKey("levelAt")) {
-            // Analytics Log: level unlocked
-            AnalyticsResult unlockAnalytics = Analytics.CustomEvent(
-                "LevelUnlocked", new Dictionary<string, object> {
-                    { "Level", 1 }
-                }
-            );
-
-            // Debug: Analytics 
-            Debug.Log("New User, CustomEvent LevelUnlock sent: " + unlockAnalytics);
-            Debug.Log(1);
-        }
-
         int levelAt = PlayerPrefs.GetInt("levelAt", 1);
 
         for (int i = 0; i < levelButtons.Count; i++) {
