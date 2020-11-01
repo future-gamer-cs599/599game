@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         if (!gameEnded) {
             gameEnded = true;
             Debug.Log("Game Over!");
-
+            Debug.Log(SceneManager.GetActiveScene().buildIndex);
             // Analytics Log: Level lost by failling
             GameObject player = GameObject.Find("Player");
             AnalyticsResult lossAnalytics = Analytics.CustomEvent(
