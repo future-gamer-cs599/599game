@@ -28,7 +28,7 @@ public class JoyStickMove : MonoBehaviour
         var rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = new Vector3(joystick.Horizontal * moveSpeed + Input.GetAxis("Horizontal") * moveSpeed, rigidbody.velocity.y, joystick.Vertical * moveSpeed + Input.GetAxis("Vertical") * moveSpeed);
         // if the player falls off, restart the game
-        if (rigidbody.position.y < -0.5f)
+        if (SceneManager.GetActiveScene().buildIndex != 6 && rigidbody.position.y < -0.5f)
         {
             FindObjectOfType<GameManager>().EndGame("Fell");
         }
