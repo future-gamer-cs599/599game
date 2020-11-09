@@ -31,13 +31,10 @@ public class GroundManager : MonoBehaviour
         rollingBalls = new List<Rigidbody>();
         player = GameObject.Find("Player").transform;
         InvokeRepeating("SpawnFalling", fallingStart, fallingRate);
-        rollingForceOptions.Add(new Vector3(-10, 0, 0));
-        rollingForceOptions.Add(new Vector3(10, 0, 0));
+        rollingForceOptions.Add(new Vector3(-10f, 0, 0));
+        rollingForceOptions.Add(new Vector3(10f, 0, 0));
         rollingForceOptions.Add(new Vector3(-5, 0, 0));
         rollingForceOptions.Add(new Vector3(5, 0, 0));
-        for (int i = 0; i < 37; i ++) {
-            Debug.Log(cubes[i].position.z);
-        }
     }
 
     void Update() {
