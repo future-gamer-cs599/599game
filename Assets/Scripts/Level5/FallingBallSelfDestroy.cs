@@ -5,7 +5,7 @@ using UnityEngine;
 public class FallingBallSelfDestroy : MonoBehaviour
 {
     void OnBecameInvisible(){
-        // Debug.Log("destroy");
+        Debug.Log("destroy");
         Destroy(this.gameObject);
     }
 }
