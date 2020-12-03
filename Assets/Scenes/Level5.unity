@@ -1955,8 +1955,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7857506442498686363}
-  fallingBall: {fileID: 8917725957150470040, guid: f11f4656aaf62da41838106c00951a0c,
-    type: 3}
+  fallingBalls:
+  - {fileID: 2569848755843798432, guid: 842467ccc4ad3264d8b43bcea1454771, type: 3}
+  - {fileID: 5123548527645090633, guid: 7abb5fa6bbe4acd47bdcd63e0ad8fa4d, type: 3}
+  - {fileID: 4314141397402399483, guid: 9524b77da7900e2448a2bbf6302deb30, type: 3}
+  - {fileID: 6294783438729977528, guid: 998fb6df537612b4b93fd1efbbb9c4a7, type: 3}
+  - {fileID: 3053188433248875589, guid: 5424cda683fac0e4ea61e5245094a7e5, type: 3}
+  - {fileID: 8917725957150470040, guid: f11f4656aaf62da41838106c00951a0c, type: 3}
   rollingBall: {fileID: 5322096447728902266, guid: 61fce653992b04754a66070349224cbe,
     type: 3}
 --- !u!135 &425065921
@@ -4376,7 +4381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7857506442498686363}
-  fallingBall: {fileID: 0}
+  fallingBalls: []
   rollingBall: {fileID: 0}
 --- !u!1001 &1053734174
 PrefabInstance:
