@@ -8731,6 +8731,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3498364686782459444, guid: 15b80002d6b824f49a777f658ef8bfda,
+        type: 3}
+      propertyPath: m_TagString
+      value: scoreScore
+      objectReference: {fileID: 0}
     - target: {fileID: 3498364687184036022, guid: 15b80002d6b824f49a777f658ef8bfda,
         type: 3}
       propertyPath: m_AnchoredPosition.x
