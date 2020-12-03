@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class JoyStickMove : MonoBehaviour
 {
+    public AudioSource jumpSound;
     public float moveSpeed = 30f;
     public float jumpSpeed = 30f;
     protected Joystick joystick;
@@ -57,11 +58,13 @@ public class JoyStickMove : MonoBehaviour
         // jump 
         if ((!jump && joybutton.Pressed) || (!jump && Input.GetKeyDown(KeyCode.Space)))
         {
+            
             if (JumpCount > 0)
             {
                 jump = true;
                 GetComponent<Rigidbody>().velocity += Vector3.up * jumpSpeed;
                 JumpCount -= 1;
+                jumpSound.Play();
                 /***********************/
                 /****** ANALYTICS ******/
                 /***********************/
