@@ -23,13 +23,13 @@ public class EndTrigger : MonoBehaviour
         scoreBoard.SetActive(false);
         timeDisplayed.SetActive(true);
         var levelName = (SceneManager.GetActiveScene().buildIndex - 1).ToString();
-        if (PlayerPrefs.GetFloat(levelName + "HighScore", 0f) == 0)
+        if (PlayerPrefs.GetFloat(levelName, 10000f) == 10000f)
         {
             bestScore.text = "Not Available";
         }
         else
         {
-            bestScore.text = PlayerPrefs.GetFloat(levelName + "HighScore", 0f).ToString("F2") + "s";
+            bestScore.text = PlayerPrefs.GetFloat(levelName, 10000f).ToString("F2") + "s";
         }
 
     }
@@ -52,9 +52,10 @@ public class EndTrigger : MonoBehaviour
             movement.enabled = false;
             Debug.Log("end hit");
             var levelName = (SceneManager.GetActiveScene().buildIndex - 1).ToString();
-            if (timeStart < PlayerPrefs.GetFloat(levelName + "HighScore", 0f))
+            if (timeStart < PlayerPrefs.GetFloat(levelName, 10000f))
             {
-                PlayerPrefs.SetFloat(levelName + "HighScore", timeStart);
+                PlayerPrefs.SetFloat(levelName, timeStart);
+                PlayerPrefs.Save();
             }
             scoreBoard.SetActive(true);//show scoreboard
             timeDisplayed.SetActive(false);
