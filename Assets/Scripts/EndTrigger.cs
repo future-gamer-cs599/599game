@@ -55,6 +55,7 @@ public class EndTrigger : MonoBehaviour
             if (timeStart < PlayerPrefs.GetFloat(levelName, 10000f))
             {
                 PlayerPrefs.SetFloat(levelName, timeStart);
+                bestScore.text = PlayerPrefs.GetFloat(levelName, 10000f).ToString("F2") + "s";
                 PlayerPrefs.Save();
             }
             scoreBoard.SetActive(true);//show scoreboard
