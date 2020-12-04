@@ -1488,7 +1488,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sound
       value: 
-      objectReference: {fileID: 566276275}
+      objectReference: {fileID: 564652947}
     - target: {fileID: 1174689819592783244, guid: 74362093b05e0a34e8acf20db768179f,
         type: 3}
       propertyPath: m_Material
@@ -4721,6 +4721,12 @@ MonoBehaviour:
   repeatRate: 0.3
   fallingObj: {fileID: 0}
   player: {fileID: 564652945}
+--- !u!82 &564652947 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6323760314680006271, guid: 74362093b05e0a34e8acf20db768179f,
+    type: 3}
+  m_PrefabInstance: {fileID: 185897921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &564652948 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 910923898752834420, guid: 74362093b05e0a34e8acf20db768179f,
@@ -18237,7 +18243,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6fff623d897b4fb0a4aff73ea3edcea, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 559e0144972e548e8a0ed283012ec542, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
