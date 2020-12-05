@@ -18,6 +18,13 @@ public class JoyStickMove : MonoBehaviour
     public float TurnSpeed = 40f;
     Quaternion playerRotation = Quaternion.identity;
 
+    public AudioSource fallSound;
+    public CanvasGroup FallImageCanvasGroup;
+    public float fadeDuration = 1f;
+    public float displayImageDuration = 1f;
+    bool m_IsPlayerFall;
+    float m_Timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +59,11 @@ public class JoyStickMove : MonoBehaviour
         // if the player falls off, restart the game
         if (SceneManager.GetActiveScene().buildIndex != 6 && GetComponent<Rigidbody>().position.y < -0.5f)
         {
-            FindObjectOfType<GameManager>().EndGame("Fell");
+            if (!m_IsPlayerFall) {
+                m_IsPlayerFall = true;
+                fallSound.Play();
+            }
+            Fall();
         }
 
         // jump 
@@ -88,5 +99,15 @@ public class JoyStickMove : MonoBehaviour
     {
         JumpCount = MaxJumps;
     }
+
+    void Fall() {     
+        m_Timer += Time.deltaTime;
+        FallImageCanvasGroup.alpha = m_Timer / fadeDuration;
+
+        if (m_Timer > fadeDuration + displayImageDuration) {
+            Debug.Log("player fell");
+            FindObjectOfType<GameManager>().EndGame("Fell");
+        }
+    }    
 
 }

@@ -8,7 +8,7 @@ public class ReplayButton : MonoBehaviour
 {
     public float restartDelay = 2f;
     // Return to home screen
-    public void Home()
+    public void Replay()
     {
         Debug.Log("restart called");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

@@ -10,9 +10,9 @@ using UnityEngine.Analytics;
 public class gotoNextButton : MonoBehaviour
 {
     public GameManager gameManager;
-    public void Home()
+    public void NextLevel()
     {
         Debug.Log("complete level");
-        gameManager.completeLevel();
+        gameManager.LoadNextLevel();
     }
 }
