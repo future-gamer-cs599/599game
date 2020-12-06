@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundManager : MonoBehaviour
 {
     public Transform player;
-    public Rigidbody fallingBall;
+    public List<Rigidbody> fallingBalls;
     public Rigidbody rollingBall;
     bool fallingStarted = false;
     bool rollingStarted = false;
@@ -14,10 +14,10 @@ public class GroundManager : MonoBehaviour
     float yOffsetMax = 4f;
     float zOffset = 8f;
     float fallingStart = 0.3f;
-    float fallingRate = 0.4f;
+    float fallingRate = 0.65f;
     float rollingRate = 1f;
-    int fallStop = 180;
-    int rollStop = 350;
+    int fallStop = 150;
+    int rollStop = 220;
     List<Rigidbody> rollingBalls = new List<Rigidbody>();
     List<int> rollingForces = new List<int>();
     List<Vector3> rollingForceOptions = new List<Vector3>();
@@ -31,8 +31,8 @@ public class GroundManager : MonoBehaviour
         InvokeRepeating("SpawnFalling", fallingStart, fallingRate);
         rollingForceOptions.Add(new Vector3(-10, 0, 0));
         rollingForceOptions.Add(new Vector3(10, 0, 0));
-        rollingForceOptions.Add(new Vector3(-20, 0, 0));
-        rollingForceOptions.Add(new Vector3(20, 0, 0));
+        rollingForceOptions.Add(new Vector3(-5, 0, 0));
+        rollingForceOptions.Add(new Vector3(5, 0, 0));
     }
 
     void Update() {
@@ -68,7 +68,7 @@ public class GroundManager : MonoBehaviour
     void SpawnRolling() {
         Vector3 playerPostion = player.transform.position;
         if (previousPlayerPosition.z != playerPostion.z) {
-            Rigidbody ball = Instantiate(rollingBall, new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), 1, playerPostion.z + zOffset + 5), Quaternion.identity);
+            Rigidbody ball = Instantiate(rollingBall, new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), playerPostion.y + 1, playerPostion.z + zOffset + 3), Quaternion.identity);
             rollingBalls.Add(ball);
             rollingForces.Add(Random.Range(0, rollingForceOptions.Count));
             previousPlayerPosition = playerPostion;
@@ -79,11 +79,11 @@ public class GroundManager : MonoBehaviour
         Vector3 playerPostion = player.position;
         if (!fallingStarted) {
             fallingStarted = true;
-            Instantiate(fallingBall, new Vector3(playerPostion.x - 3f, Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
+            Instantiate(fallingBalls[Random.Range(0, fallingBalls.Count)], new Vector3(playerPostion.x - 3f, Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
             return;
         }
         if (previousPlayerPosition.z != playerPostion.z) {
-            Instantiate(fallingBall, new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
+            Instantiate(fallingBalls[Random.Range(0, fallingBalls.Count)], new Vector3(playerPostion.x + Random.Range(-xOffset,xOffset), Random.Range(yOffsetMin, yOffsetMax), playerPostion.z + zOffset), Quaternion.identity);
             previousPlayerPosition = playerPostion;
         }
         

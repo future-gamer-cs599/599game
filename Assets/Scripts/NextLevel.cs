@@ -39,7 +39,7 @@ public class NextLevel : MonoBehaviour
         AnalyticsResult completeAnalytics = Analytics.CustomEvent(
             "LevelComplete", new Dictionary<string, object> {
                 { "Level", SceneManager.GetActiveScene().buildIndex - 1 },
-                { "CompleteTime", GameObject.Find("Score").GetComponent<Text>().text}
+                { "CompleteTime", GameObject.FindWithTag("scoreScore").GetComponent<Text>().text}
             }
         );
         // Analytics Log: level open

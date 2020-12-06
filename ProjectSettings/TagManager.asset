@@ -10,6 +10,7 @@ TagManager:
   - instructionTag
   - dead
   - backgroundMusic
+  - scoreScore
   layers:
   - Default
   - TransparentFX
